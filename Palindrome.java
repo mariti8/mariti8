@@ -23,14 +23,14 @@ public class Palindrome
 	*/
 	public static void main(String[] args)
 	{
-	 	for (int i = 0; i < args.length; i++) 
+	 	for (int i = 0; i < args.length(); i++) 
  		{
  			//String s = args[i];
 
  			if ( isPalindrome(args[i]))
- 			System.out.println(1);
+ 			System.out.println("1");
  		else
- 			System.out.println(0);
+ 			System.out.println("0");
 
  		} 
 	}
