@@ -9,6 +9,7 @@ public class AStarState
 {
     /** This is a reference to the map that the A* algorithm is navigating. **/
     private Map2D map;
+    
 
 
     /**
@@ -35,6 +36,9 @@ public class AStarState
      **/
     public Waypoint getMinOpenWaypoint()
     {
+        //Эта функция должна проверить все точки в наборе открытых точек и
+//вернуть ссылку на точку с наименьшей общей стоимостью. Если нет точки
+//в "открытых" наборах, вернитесь NULL.
         // TODO:  Implement.
         return null;
     }
@@ -48,7 +52,18 @@ public class AStarState
      * if</em> the new waypoint's "previous cost" value is less than the current
      * waypoint's "previous cost" value.
      **/
-    public boolean addOpenWaypoint(Waypoint newWP)
+    /**Это самый сложный способ в А* форме. А делает его сложнее, чем
+остальные то, что он должен только добавить указанную точку при
+существующей путевой точке. Вот то, что этот метод должен делать:
+• Если в настоящее время нет точек для этого места в "открытых точках"
+набора, то просто добавить новую точку.
+• Если точка уже в этом месте в "открытой точке" набора, то потом
+добавить новый пункт, только если "старая цена" за новую точку
+меньше "старой цены" за текущую точку. (Убедитесь, что используете
+прежнюю стоимость, а не общую стоимость.) Другими словами, если
+новая точка представляет собой более короткий путь к этому месту, чем
+текущий маршрут, заменить текущую точку на новую.
+    public boolean addOpenWaypoint(Waypoint newWP)**/
     {
         // TODO:  Implement.
         return false;
@@ -58,6 +73,7 @@ public class AStarState
     /** Returns the current number of open waypoints. **/
     public int numOpenWaypoints()
     {
+        //Этот метод просто возвращает количество точек в набор открытых точек.
         // TODO:  Implement.
         return 0;
     }

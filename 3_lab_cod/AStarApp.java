@@ -4,15 +4,15 @@ import javax.swing.*;
 
 
 /**
- * A simple Swing application to demonstrate the A* pathfinding algorithm.  The
- * user is presented with a map, containing a start and end location.  The user
- * can draw or clear obstacles on the map, and then press a button to compute a
- * path from start to end using the A* pathfinding algorithm.  If a path is
- * found, it is displayed in green.
- **/
+  * Простое приложение Swing для демонстрации алгоритма поиска A *.
+  * пользователю предоставляется карта, содержащая начальное и конечное местоположение. Пользователь
+  * может нарисовать или очистить препятствия на карте, а затем нажать кнопку, чтобы вычислить
+  * путь от начала до конца с использованием алгоритма поиска A *. Если путь
+  * found, он отображается зеленым цветом.
+  **/
 public class AStarApp {
 
-    /** The number of grid cells in the X direction. **/
+    /** Число ячеек сетки в направлении X. **/
     private int width;
     
     /** The number of grid cells in the Y direction. **/
@@ -25,30 +25,30 @@ public class AStarApp {
     private Location finishLoc;
     
     /**
-     * This is a 2D array of UI components that provide display and manipulation
-     * of the cells in the map.
-     ***/
+      * Это 2D-массив компонентов пользовательского интерфейса, которые обеспечивают отображение и манипуляцию
+      * ячеек на карте.
+      ***/
     private JMapCell[][] mapCells;
 
     
     /**
-     * This inner class handles mouse events in the main grid of map cells, by
-     * modifying the cells based on the mouse button state and the initial edit
-     * that was performed.
-     **/
+      * Этот внутренний класс обрабатывает события мыши в основной сетке ячеек карты,
+      * изменение ячеек на основе состояния кнопки мыши и первоначального редактирования
+      * Это было выполнено.
+      **/
     private class MapCellHandler implements MouseListener
     {
         /**
-         * This value will be true if a mouse button has been pressed and we are
-         * currently in the midst of a modification operation.
-         **/
+          * Это значение будет истинным, если была нажата кнопка мыши, и мы
+          * в настоящее время в процессе операции модификации.
+          **/
         private boolean modifying;
         
         /**
-         * This value records whether we are making cells passable or
-         * impassable.  Which it is depends on the original state of the cell
-         * that the operation was started within.
-         **/
+          * Это значение указывает, будем ли мы делать ячейки пропускаемыми или
+          * непроходимый. Что это зависит от исходного состояния ячейки
+          * что операция была запущена внутри.
+          **/
         private boolean makePassable;
         
         /** Initiates the modification operation. **/
@@ -58,8 +58,8 @@ public class AStarApp {
             
             JMapCell cell = (JMapCell) e.getSource();
             
-            // If the current cell is passable then we are making them
-            // impassable; if it's impassable then we are making them passable.
+           // Если текущая ячейка является проходимой, мы делаем их
+             // непроходимый; если это непроходимо, мы делаем их проходимыми
             
             makePassable = !cell.isPassable();
             
@@ -190,13 +190,13 @@ public class AStarApp {
     
 
     /**
-     * This helper method attempts to compute a path using the current map
-     * state.  The implementation is rather slow; a new {@link Map2D} object is
-     * created, and initialized from the current application state.  Then the A*
-     * pathfinder is called, and if a path is found, the display is updated to
-     * show the path that was found.  (A better solution would use the Model
-     * View Controller design pattern.)
-     **/
+      * Этот вспомогательный метод пытается вычислить путь, используя текущую карту
+      * государство. Реализация довольно медленная; новый объект {@link Map2D}
+      * создан и инициализирован из текущего состояния приложения. Тогда A *
+      * pathfinder вызывается, и если путь найден, дисплей обновляется до
+      * показать путь, который был найден. (Лучшее решение будет использовать модель
+      * Просмотр шаблона проектирования контроллера.)
+      **/
     private void findAndShowPath()
     {
         // Create a Map2D object containing the current state of the user input.

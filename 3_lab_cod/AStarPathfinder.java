@@ -8,6 +8,12 @@ import java.util.HashSet;
  * really doesn't need to maintain any state between invocations of the
  * algorithm.
  */
+/**
+  * Этот класс содержит реализацию алгоритма поиска A *.
+  * алгоритм реализован как статический метод, так как алгоритм поиска пути
+  * действительно не нужно поддерживать какое-либо состояние между вызовами
+  * алгоритм.
+  */
 public class AStarPathfinder
 {
     /**
@@ -15,6 +21,11 @@ public class AStarPathfinder
      * particular waypoint happens to exceed this cost limit, the waypoint is
      * discarded.
      **/
+    /**
+      * Эта константа имеет максимальный предел отсечки для стоимости путей. Если
+      * конкретная путевая точка превышает этот предел стоимости, точка маршрута
+      * отброшено.
+      **/
     public static final float COST_LIMIT = 1e6f;
 
     
@@ -25,6 +36,13 @@ public class AStarPathfinder
      * used to walk backwards to the starting point.  If no path can be found,
      * <code>null</code> is returned.
      **/
+    /**
+      * Попытка вычислить путь, который перемещается между началом и концом
+      * местоположения указанной карты. Если путь можно найти, путевая точка
+      * возвращается шаг <em> final </ em> в пути; эта точка может быть
+      * используется для ходьбы назад к исходной точке. Если путь не найден,
+      * <код> null </ code> возвращается.
+      **/
     public static Waypoint computePath(Map2D map)
     {
         // Variables necessary for the A* search.
@@ -68,6 +86,11 @@ public class AStarPathfinder
      * steps" from that waypoint.  The new waypoints are added to the "open
      * waypoints" collection of the passed-in A* state object.
      **/
+    /**
+      * Этот статический вспомогательный метод берет путевую точку и генерирует все действительные «следующие»
+      * шаги "с этой точки маршрута. Новые путевые точки добавляются к" открытому
+      * waypoints "объекта переданного состояния A *.
+      **/
     private static void takeNextStep(Waypoint currWP, AStarState state)
     {
         Location loc = currWP.getLocation();

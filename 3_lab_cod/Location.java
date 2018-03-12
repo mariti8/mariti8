@@ -23,7 +23,7 @@ public class Location
     {
         this(0, 0);
     }
-     public boolean equals(Location b)
+    public boolean equals(Location b)
     {
         return (this== b);
     }
