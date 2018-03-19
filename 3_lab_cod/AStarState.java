@@ -40,6 +40,18 @@ public class AStarState
 //вернуть ссылку на точку с наименьшей общей стоимостью. Если нет точки
 //в "открытых" наборах, вернитесь NULL.
         // TODO:  Implement.
+        
+        float min = Float.POSITIVE_INFINITY;
+        
+        for (Waypoint wp: openWaypoints.values()) {
+        	float cost = wp.getTotalCost();
+        	if (cost < min) {
+        		min = cost;
+        		minWp = wp;
+        	}
+        }
+        
+        
         return null;
     }
 
@@ -62,10 +74,18 @@ public class AStarState
 меньше "старой цены" за текущую точку. (Убедитесь, что используете
 прежнюю стоимость, а не общую стоимость.) Другими словами, если
 новая точка представляет собой более короткий путь к этому месту, чем
-текущий маршрут, заменить текущую точку на новую.
-    public boolean addOpenWaypoint(Waypoint newWP)**/
+текущий маршрут, заменить текущую точку на новую. **/
+    
+    public boolean addOpenWaypoint(Waypoint newWP)
     {
         // TODO:  Implement.
+        Waypoint openWP = openWaypoints.get(newWP.loc);
+        
+        if (openWP == null || newWP.getPreviousCost() < openWP.getPreviousCost()) {
+        	openWaypoints.put(newWP.loc, newWP);
+        	
+        	return true;
+        }
         return false;
     }
 
@@ -75,6 +95,9 @@ public class AStarState
     {
         //Этот метод просто возвращает количество точек в набор открытых точек.
         // TODO:  Implement.
+        if (openWaypoints.size())
+        	return 1;
+     
         return 0;
     }
 
@@ -86,6 +109,12 @@ public class AStarState
     public void closeWaypoint(Location loc)
     {
         // TODO:  Implement.
+        Waypoint openWP = openWaypoints.remove(loc);
+        
+        if (openWP != null) 
+        {
+        	closeWaypoints.put(loc, openWP);
+        }
     }
 
     /**
@@ -95,6 +124,7 @@ public class AStarState
     public boolean isLocationClosed(Location loc)
     {
         // TODO:  Implement.
-        return false;
+        return closeWaypoints.containsKey(loc);
+        //return false;
     }
 }
